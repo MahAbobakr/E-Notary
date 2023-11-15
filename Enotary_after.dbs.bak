@@ -2435,6 +2435,14 @@
 				<column name="template_id" options=" ASC" />
 			</index>
 		</table>
+		<table name="test" prior="Tbl" >
+			<comment><![CDATA[enotary]]></comment>
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="name" type="varchar" length="100" jt="12" />
+			<index name="pk_test" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
 		<table name="transaction_fee" spec="" >
 			<column name="id" type="int" jt="4" mandatory="y" >
 				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
@@ -2781,7 +2789,6 @@
 		<entity schema="dbo" name="related_data" color="BED3F4" x="4368" y="2224" />
 		<entity schema="dbo" name="role" color="BED3F4" x="2656" y="2288" />
 		<entity schema="dbo" name="role-claim" color="BED3F4" x="2448" y="2544" />
-		<entity schema="dbo" name="service_fee" color="BED3F4" x="2640" y="1952" />
 		<entity schema="dbo" name="service_kind" color="BED3F4" x="2336" y="2192" />
 		<entity schema="dbo" name="shorten_url" color="BED3F4" x="2672" y="1776" />
 		<entity schema="dbo" name="skipp_apps" color="BED3F4" x="2656" y="1536" />
@@ -2801,6 +2808,7 @@
 		<entity schema="dbo" name="template_party" color="BEBEF4" x="1872" y="48" />
 		<entity schema="dbo" name="template_reason" color="BEBEF4" x="2096" y="48" />
 		<entity schema="dbo" name="term" color="BED3F4" x="4112" y="1168" />
+		<entity schema="dbo" name="test" color="C1D8EE" x="3360" y="2160" />
 		<entity schema="dbo" name="transaction_fee" color="BED3F4" x="4368" y="1776" />
 		<entity schema="dbo" name="transaction_old_version" color="BED3F4" x="4656" y="2224" />
 		<entity schema="dbo" name="uae_pass_application" color="BED3F4" x="4368" y="2560" />

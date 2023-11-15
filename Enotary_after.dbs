@@ -2435,6 +2435,14 @@
 				<column name="template_id" options=" ASC" />
 			</index>
 		</table>
+		<table name="test" prior="Tbl" >
+			<comment><![CDATA[enotary]]></comment>
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="name" type="varchar" length="100" jt="12" />
+			<index name="pk_test" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
 		<table name="transaction_fee" spec="" >
 			<column name="id" type="int" jt="4" mandatory="y" >
 				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
@@ -2800,6 +2808,7 @@
 		<entity schema="dbo" name="template_party" color="BEBEF4" x="1872" y="48" />
 		<entity schema="dbo" name="template_reason" color="BEBEF4" x="2096" y="48" />
 		<entity schema="dbo" name="term" color="BED3F4" x="4112" y="1168" />
+		<entity schema="dbo" name="test" color="C1D8EE" x="2544" y="1968" />
 		<entity schema="dbo" name="transaction_fee" color="BED3F4" x="4368" y="1776" />
 		<entity schema="dbo" name="transaction_old_version" color="BED3F4" x="4656" y="2224" />
 		<entity schema="dbo" name="uae_pass_application" color="BED3F4" x="4368" y="2560" />
