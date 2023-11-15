@@ -2808,7 +2808,7 @@
 		<entity schema="dbo" name="template_party" color="BEBEF4" x="1872" y="48" />
 		<entity schema="dbo" name="template_reason" color="BEBEF4" x="2096" y="48" />
 		<entity schema="dbo" name="term" color="BED3F4" x="4112" y="1168" />
-		<entity schema="dbo" name="test" color="C1D8EE" x="3360" y="2160" />
+		<entity schema="dbo" name="test" color="C1D8EE" x="2544" y="1968" />
 		<entity schema="dbo" name="transaction_fee" color="BED3F4" x="4368" y="1776" />
 		<entity schema="dbo" name="transaction_old_version" color="BED3F4" x="4656" y="2224" />
 		<entity schema="dbo" name="uae_pass_application" color="BED3F4" x="4368" y="2560" />

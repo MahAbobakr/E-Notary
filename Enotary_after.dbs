@@ -2437,8 +2437,11 @@
 		</table>
 		<table name="test" prior="Tbl" >
 			<comment><![CDATA[enotary]]></comment>
-			<column name="id" type="int" jt="4" mandatory="y" />
-			<column name="name" type="varchar" length="100" jt="12" />
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<defo><![CDATA[1]]></defo>
+			</column>
+			<column name="description" prior="name" type="varchar" length="100" jt="12" />
+			<column name="title" type="nvarchar" length="150" jt="12" />
 			<index name="pk_test" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
