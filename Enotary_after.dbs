@@ -31,6 +31,7 @@
 			<column name="createdAt" type="datetime" jt="92" />
 			<column name="updatedAt" type="datetime" jt="92" />
 		</table>
+		<table name="Tbl" />
 		<table name="__EFMigrationsHistory" spec="" >
 			<column name="MigrationId" type="nvarchar" length="150" jt="12" mandatory="y" />
 			<column name="ProductVersion" type="nvarchar" length="32" jt="12" mandatory="y" />
@@ -2441,8 +2442,15 @@
 				<defo><![CDATA[1]]></defo>
 			</column>
 			<column name="description" prior="name" type="varchar" length="100" jt="12" />
-			<column name="title" type="nvarchar" length="150" jt="12" />
+			<column name="title22" prior="title" type="nvarchar" length="150" jt="12" />
 			<index name="pk_test" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="test2" prior="test 2" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="col" type="int" jt="4" />
+			<index name="pk_test2" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
@@ -2827,5 +2835,10 @@
 			<comment><![CDATA[Add tables to the layout diagram (here) by drag & drop from the Project Tree.
 Drop this callout from its right-click pop-up.]]></comment>
 		</callout>
+	</layout>
+	<layout name="Layout_2" id="Layout-d9d" show_relation="columns" >
+		<entity schema="dbo" name="target_service" color="3986C1" x="288" y="224" />
+		<entity schema="dbo" name="test" color="3986C1" x="48" y="48" />
+		<entity schema="dbo" name="test2" color="C1D8EE" x="432" y="112" />
 	</layout>
 </project>
