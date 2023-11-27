@@ -1,0 +1,2991 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="E-Notary_SQLDBM Final.sql" id="Project-96f" database="SqlServer" >
+	<schema name="dbo" >
+		<table name="OCRDocumentFields" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="fieldClass" type="varchar" length="1500" jt="12" />
+			<column name="documentId" type="int" jt="4" />
+			<column name="score" type="float" jt="8" />
+			<column name="Xmin" type="int" jt="4" />
+			<column name="Xmax" type="int" jt="4" />
+			<column name="Ymin" type="int" jt="4" />
+			<column name="Ymax" type="int" jt="4" />
+			<column name="text" type="nvarchar" length="1500" jt="12" />
+			<column name="createdAt" type="datetime" jt="92" />
+			<column name="updatedAt" type="datetime" jt="92" />
+		</table>
+		<table name="OCRDocuments" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="documentName" type="varchar" length="500" jt="12" />
+			<column name="documentType" type="varchar" length="200" jt="12" />
+			<column name="score" type="float" jt="8" />
+			<column name="Xmin" type="int" jt="4" />
+			<column name="Xmax" type="int" jt="4" />
+			<column name="Ymin" type="int" jt="4" />
+			<column name="Ymax" type="int" jt="4" />
+			<column name="bboxImg" type="varchar" length="1500" jt="12" />
+			<column name="createdAt" type="datetime" jt="92" />
+			<column name="updatedAt" type="datetime" jt="92" />
+		</table>
+		<table name="__EFMigrationsHistory" spec="" >
+			<column name="MigrationId" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<column name="ProductVersion" type="nvarchar" length="32" jt="12" mandatory="y" />
+		</table>
+		<table name="adm_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="shortcut2" type="varchar" length="50" jt="12" />
+			<column name="action_type_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="adm_service" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="ug_id" type="int" jt="4" />
+			<column name="shortcut" type="varchar" length="50" jt="12" />
+			<column name="fee" type="int" jt="4" />
+			<column name="icon" type="varchar" length="200" jt="12" />
+			<column name="order" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="service_kind_no" type="int" jt="4" />
+			<column name="target_service" type="int" jt="4" />
+			<column name="templated" type="bit" jt="-7" />
+			<column name="default_user" type="int" jt="4" />
+			<column name="has_reason" type="bit" jt="-7" />
+			<column name="service_result" type="smallint" jt="5" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="block_target" type="bit" jt="-7" />
+			<column name="has_document" type="bit" jt="-7" />
+			<column name="approval_stage" type="int" jt="4" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="document_type_id" type="int" jt="4" />
+			<column name="limited_time" type="bit" jt="-7" />
+			<column name="khadamatiServiceNo" type="varchar" length="50" jt="12" />
+			<column name="external_file_required" type="smallint" jt="5" />
+			<column name="guid_file_path_ar" type="nvarchar" length="350" jt="12" />
+			<column name="guid_file_path_en" type="nvarchar" length="350" jt="12" />
+			<column name="delivery" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="alias_name" type="nvarchar" length="200" jt="12" />
+			<column name="has_fee" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="uae_pass" type="bit" jt="-7" />
+			<column name="has_one_sign" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="linking_id" type="nvarchar" length="50" jt="12" />
+			<column name="has_output" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="mobile_linking_id" type="nvarchar" length="50" jt="12" />
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="approval_stage" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="document_type_id" options=" ASC" />
+			</index>
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="ug_id" options=" ASC" />
+			</index>
+			<constraint name="CK_queue_status" type="CHECK" options=";" >
+				<string><![CDATA[ ([rec_status]<(3) AND [rec_status]>(-1))]]></string>
+			</constraint>
+			<fk name="adm_service_created_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="adm_service_updated_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_141" to_schema="dbo" to_table="sys_lookup_value" options="," >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="FK_service_service_kind" to_schema="dbo" to_table="service_kind" options="," >
+				<fk_column name="service_kind_no" pk="id" />
+			</fk>
+			<fk name="FK_user_login_adm_service" to_schema="dbo" to_table="user-login" options="," >
+				<fk_column name="ug_id" pk="id" />
+			</fk>
+			<fk name="R_service_stage" to_schema="dbo" to_table="adm_stage" options=";" >
+				<fk_column name="approval_stage" pk="id" />
+			</fk>
+			<fk name="adm_service_document_type_document_type_id_FK" to_schema="dbo" to_table="sys_lookup_value" options="," >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="stage_action_created_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="stage_action_updated_by_FK" to_schema="dbo" to_table="user" options=";" >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_148" to_schema="dbo" to_table="template" options="," >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="application_attachment_created_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="application_attachment_updated_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_155" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_156" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_162" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_163" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_178" to_schema="dbo" to_table="template" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="document_type_kind_lookup_value_FK" to_schema="dbo" to_table="sys_lookup_value" delete_action="cascade" update_action="cascade" options=";" >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="file_configuration_created_by _FK" to_schema="dbo" to_table="user" delete_action="setNull" update_action="cascade" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="file_configuration_updated_by_FK" to_schema="dbo" to_table="user" options=";" >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_user_last_updated_meeting" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_192" to_schema="dbo" to_table="user-login" options="," >
+				<fk_column name="ug_id" pk="id" />
+			</fk>
+			<fk name="FK_194" to_schema="dbo" to_table="sys_lookup_value" options=";" >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="FK_pns_adm_service_document_type_sys_lookup_value" to_schema="dbo" to_table="sys_lookup_value" options=";" >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="FK_pns_adm_stage_action_user" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_pns_adm_stage_action_user1" to_schema="dbo" to_table="user" options=";" >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_196" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_197" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_198" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="pns_application_template_id_FK" to_schema="dbo" to_table="pns_template" delete_action="setNull" update_action="cascade" options="," >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="pns_application_updated_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_201" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="pns_application_attachment_updated_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_217" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_218" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="FK_225_1" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="pns_related_content_template_id_FK" to_schema="dbo" to_table="pns_template" delete_action="cascade" update_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_228" to_schema="dbo" to_table="pns_template" options="," >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="pns_template_docType_FK" to_schema="dbo" to_table="sys_lookup_value" options=";" >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="pns_template_attachment_template_id_FK" to_schema="dbo" to_table="pns_template" delete_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="pns_template_party_template_id_FK" to_schema="dbo" to_table="pns_template" delete_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_229" to_schema="dbo" to_table="pns_template" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_queue_processes_service_no" to_schema="dbo" to_table="service_kind" options="," >
+				<fk_column name="service_kind_no" pk="id" />
+			</fk>
+			<fk name="related_content_template_id_FK" to_schema="dbo" to_table="template" delete_action="cascade" update_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="related_data_template_id_FK" to_schema="dbo" to_table="template" delete_action="cascade" update_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_206" to_schema="dbo" to_table="template" options="," >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="template_created_by_FK" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="template_docType_FK" to_schema="dbo" to_table="sys_lookup_value" options="," >
+				<fk_column name="document_type_id" pk="id" />
+			</fk>
+			<fk name="template_updated_by_FK" to_schema="dbo" to_table="user" options=";" >
+				<fk_column name="last_updated_by" pk="id" />
+			</fk>
+			<fk name="template_attachment_template_id_FK" to_schema="dbo" to_table="template" delete_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_207" to_schema="dbo" to_table="template" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="template_party_template_id_FK" to_schema="dbo" to_table="template" delete_action="cascade" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_208" to_schema="dbo" to_table="template" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_209" to_schema="dbo" to_table="template" options=";" >
+				<fk_column name="template_id" pk="id" />
+			</fk>
+			<fk name="FK_213" to_schema="dbo" to_table="user" options="," >
+				<fk_column name="created_by" pk="id" />
+			</fk>
+			<fk name="FK_uae_pass_application_uae_pass_application" to_schema="dbo" to_table="uae_pass_application" options=";" >
+				<fk_column name="id" pk="id" />
+			</fk>
+		</table>
+		<table name="adm_service_document_type" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<column name="document_type_id" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="adm_stage" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<column name="shortcut" type="varchar" length="50" jt="12" />
+			<column name="period_for_archive" type="int" jt="4" />
+			<column name="period_for_late" type="int" jt="4" mandatory="y" />
+			<column name="order_no" type="int" jt="4" />
+			<column name="fee" type="int" jt="4" />
+			<column name="stage_type_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="icon" type="varchar" length="50" jt="12" />
+			<column name="khadamatiServiceNo" type="varchar" length="50" jt="12" />
+		</table>
+		<table name="adm_stage_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="stage_id" type="int" jt="4" />
+			<column name="action_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="show_order" type="tinyint" jt="-6" />
+			<column name="enabled" type="bit" jt="-7" >
+				<defo><![CDATA[((1))]]></defo>
+			</column>
+			<column name="group" type="varchar" length="25" jt="12" >
+				<defo><![CDATA[('action_btn')]]></defo>
+			</column>
+		</table>
+		<table name="app_related_content" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="title_shortcut" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="content" type="nvarchar" length="1000" jt="12" mandatory="y" />
+			<column name="content_url" type="varchar" length="100" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="app_services" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" />
+			<column name="service_code" type="nvarchar" length="70" jt="12" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="entity_id" type="int" jt="4" />
+		</table>
+		<table name="app_transaction" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" />
+			<column name="file_name" type="varchar" length="200" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="content" type="ntext" jt="-1" />
+			<column name="transaction_no" type="nvarchar" length="100" jt="12" />
+			<column name="document_url" type="nvarchar" length="200" jt="12" />
+			<column name="transaction_start_date" type="datetime" jt="92" />
+			<column name="transaction_end_date" type="datetime" jt="92" />
+			<column name="unlimited_validity" type="bit" jt="-7" />
+			<column name="transaction_status" type="int" jt="4" />
+			<column name="transaction_created_date" type="datetime" jt="92" />
+			<column name="qrcode" type="varchar" length="200" jt="12" />
+			<column name="title" type="nvarchar" length="250" jt="12" />
+			<column name="contract_value" type="float" jt="8" />
+			<column name="uae_pass_url" type="nvarchar" length="300" jt="12" />
+			<column name="finished_by" type="int" jt="4" />
+			<column name="finished_date" type="datetime" jt="92" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="transaction_status" options=" ASC" />
+			</index>
+			<index name="IX_app_transaction_app_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+			<index name="IX_taransaction_no" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="transaction_no" options=" ASC" />
+			</index>
+		</table>
+		<table name="application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" mandatory="y" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="application_no" type="nvarchar" length="100" jt="12" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="current_stage_id" type="int" jt="4" />
+			<column name="state_id" type="int" jt="4" />
+			<column name="note" type="nvarchar" length="500" jt="12" />
+			<column name="app_last_update_date" type="datetime" jt="92" />
+			<column name="row_version" type="timestamp" jt="93" />
+			<column name="application_date" type="datetime" jt="92" />
+			<column name="channel" type="int" jt="4" />
+			<column name="reason" type="int" jt="4" />
+			<column name="locked" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="last_reader" type="int" jt="4" />
+			<column name="last_read_date" type="datetime" jt="92" />
+			<column name="owner" type="int" jt="4" />
+			<column name="old_id_" type="bigint" jt="-5" />
+			<column name="old_template_id_" type="int" jt="4" />
+			<column name="delivery" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="uae_pass" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="last_notary" type="int" jt="4" />
+			<column name="prison" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="prison_id" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="current_stage_id" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="state_id" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="channel" options=" ASC" />
+			</index>
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="last_notary" options=" ASC" />
+			</index>
+			<index name="FK_7" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="prison_id" options=" ASC" />
+			</index>
+			<index name="IX_app_last_update_date" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_last_update_date" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="mime_type" type="nvarchar" length="200" jt="12" />
+			<column name="size_" type="bigint" jt="-5" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="attachment_id" type="int" jt="4" />
+			<column name="file_name" type="nvarchar" length="500" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="note" type="nvarchar" length="200" jt="12" />
+			<column name="OldAttachId" type="bigint" jt="-5" />
+			<column name="OldId1" type="bigint" jt="-5" />
+			<index name="IX_application_attachment_application_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_objection" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="full_name" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="phone" type="nvarchar" length="50" jt="12" />
+			<column name="email" type="nvarchar" length="75" jt="12" />
+			<column name="birthday" type="date" jt="91" />
+			<column name="nationality" type="int" jt="4" />
+			<column name="gender" type="nchar" length="10" jt="1" />
+			<column name="emirates_id" type="nvarchar" length="50" jt="12" />
+			<column name="address" type="nvarchar" length="200" jt="12" />
+			<column name="emara_id" type="int" jt="4" />
+			<column name="city" type="nvarchar" length="50" jt="12" />
+			<column name="reason" type="nvarchar" length="1000" jt="12" mandatory="y" />
+			<column name="note" type="nvarchar" length="1000" jt="12" />
+			<column name="created_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_objection_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="objection_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<index name="IX_app_objection_attachment_ob_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="objection_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_party" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="party_id" type="int" jt="4" />
+			<column name="transaction_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="is_owner" type="bit" jt="-7" />
+			<column name="party_type_value_id" type="int" jt="4" />
+			<column name="full_name" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="mobile" type="varchar" length="25" jt="12" />
+			<column name="email" type="varchar" length="100" jt="12" />
+			<column name="birth_date" type="date" jt="91" />
+			<column name="marital_status" type="int" jt="4" />
+			<column name="gender" type="int" jt="4" />
+			<column name="emirates_id_no" type="varchar" length="50" jt="12" />
+			<column name="id_expiration_date" type="date" jt="91" />
+			<column name="id_attachment" type="varchar" length="200" jt="12" />
+			<column name="unified_number" type="varchar" length="50" jt="12" />
+			<column name="sign_required" type="bit" jt="-7" />
+			<column name="signed" type="bit" jt="-7" />
+			<column name="sign_type" type="int" jt="4" />
+			<column name="sign_date" type="datetime" jt="92" />
+			<column name="sign_url" type="varchar" length="150" jt="12" />
+			<column name="editable_sign" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="address" type="nvarchar" length="355" jt="12" />
+			<column name="description" type="nvarchar" length="250" jt="12" />
+			<column name="emirate" type="int" jt="4" />
+			<column name="city" type="nvarchar" length="200" jt="12" />
+			<column name="alternative_email" type="varchar" length="100" jt="12" />
+			<column name="BeginDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(sysutcdatetime())]]></defo>
+			</column>
+			<column name="EndDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(CONVERT([datetime2],'9999-12-31 23:59:59.9999999'))]]></defo>
+			</column>
+			<column name="notary_id" type="int" jt="4" />
+			<column name="old_id" type="bigint" jt="-5" />
+			<column name="start_effective_date" type="datetime" jt="92" />
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="last_updated_by" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="notary_id" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_type_value_id" options=" ASC" />
+			</index>
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="transaction_id" options=" ASC" />
+			</index>
+			<index name="FK_7" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="gender" options=" ASC" />
+			</index>
+			<index name="IX_app_party_isOwner_trId" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="is_owner" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_party_deleted" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="party_id" type="int" jt="4" />
+			<column name="transaction_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" />
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="is_owner" type="bit" jt="-7" />
+			<column name="party_type_value_id" type="int" jt="4" />
+			<column name="full_name" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="mobile" type="varchar" length="25" jt="12" />
+			<column name="email" type="varchar" length="100" jt="12" />
+			<column name="nationality" type="int" jt="4" />
+			<column name="birth_date" type="date" jt="91" />
+			<column name="marital_status" type="int" jt="4" />
+			<column name="gender" type="int" jt="4" />
+			<column name="emirates_id_no" type="varchar" length="50" jt="12" />
+			<column name="id_expiration_date" type="date" jt="91" />
+			<column name="id_attachment" type="varchar" length="200" jt="12" />
+			<column name="unified_number" type="varchar" length="50" jt="12" />
+			<column name="sign_required" type="bit" jt="-7" />
+			<column name="signed" type="bit" jt="-7" />
+			<column name="sign_type" type="int" jt="4" />
+			<column name="sign_date" type="datetime" jt="92" />
+			<column name="sign_url" type="varchar" length="150" jt="12" />
+			<column name="editable_sign" type="bit" jt="-7" />
+			<column name="address" type="nvarchar" length="255" jt="12" />
+			<column name="description" type="nvarchar" length="100" jt="12" />
+			<column name="emirate" type="int" jt="4" />
+			<column name="city" type="nvarchar" length="100" jt="12" />
+			<column name="alternative_email" type="varchar" length="100" jt="12" />
+			<column name="notary_id" type="int" jt="4" />
+			<column name="operation_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="last_updated_by" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="notary_id" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_type_value_id" options=" ASC" />
+			</index>
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="gender" options=" ASC" />
+			</index>
+			<index name="FK_7" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="transaction_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_party_extra_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="application_party_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment_id" type="int" jt="4" />
+			<column name="attachment_name" type="nvarchar" length="100" jt="12" />
+			<column name="attachment_url" type="varchar" length="200" jt="12" />
+			<column name="number" type="varchar" length="100" jt="12" />
+			<column name="country_of_Issue" type="int" jt="4" />
+			<column name="expiration_date" type="date" jt="91" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<index name="IX_extra_attachment_application_party_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_party_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="application_track" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="stage_id" type="int" jt="4" />
+			<column name="next_stage_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="note" type="nvarchar" length="500" jt="12" />
+			<column name="location_id" type="int" jt="4" />
+			<column name="note_kind" type="smallint" jt="5" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage_id" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="next_stage_id" options=" ASC" />
+			</index>
+			<index name="IX_app_track_application_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+			<index name="IX_app_track_user_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="aramex_emara" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="emara_id" type="int" jt="4" mandatory="y" />
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="aramex_logs" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="stage" type="int" jt="4" />
+			<column name="next_stage" type="int" jt="4" />
+			<column name="user_id" type="int" jt="4" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="next_stage" options=" ASC" />
+			</index>
+		</table>
+		<table name="aramex_requests" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" />
+			<column name="owner_name" type="nvarchar" length="300" jt="12" />
+			<column name="mobile" type="varchar" length="25" jt="12" />
+			<column name="email" type="varchar" length="100" jt="12" />
+			<column name="state_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="note" type="nvarchar" length="200" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="state_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="black_list_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="is_freaze" type="bit" jt="-7" >
+				<defo><![CDATA[((1))]]></defo>
+			</column>
+			<column name="freaze_reason" type="nvarchar" length="200" jt="12" />
+			<column name="unfreaze_reason" type="nvarchar" length="200" jt="12" />
+			<column name="app_kind" type="nvarchar" length="200" jt="12" />
+		</table>
+		<table name="black_list_managers" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="email" type="nvarchar" length="250" jt="12" />
+			<column name="full_name" type="nvarchar" length="250" jt="12" />
+			<column name="active" type="bit" jt="-7" />
+			<column name="created_date" type="datetime" jt="92" />
+		</table>
+		<table name="black_list_party" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="full_name" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="emirates_id" type="varchar" length="50" jt="12" />
+			<column name="passport" type="nvarchar" length="200" jt="12" />
+			<column name="email" type="nvarchar" length="200" jt="12" />
+			<column name="phone" type="nvarchar" length="200" jt="12" />
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="isblack" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((1))]]></defo>
+			</column>
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="unified_number" type="nvarchar" length="50" jt="12" />
+			<column name="freaze_reason" type="nvarchar" length="250" jt="12" />
+			<column name="nationality" type="int" jt="4" />
+		</table>
+		<table name="block_chain_POA" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="VCID" type="nvarchar" length="200" jt="12" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="is_UG_cancelled" type="bit" jt="-7" />
+			<column name="is_sys_cancelled" type="bit" jt="-7" />
+			<column name="is_sent_UG" type="bit" jt="-7" />
+			<column name="update_at" type="datetime" jt="92" />
+			<column name="TransactionRefNo" type="varchar" length="250" jt="12" />
+			<column name="revocationReason" type="nvarchar" length="200" jt="12" />
+			<column name="revoked_date" type="datetime" jt="92" />
+			<index name="IX_block_chain_POA" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="VCID" options=" ASC" />
+			</index>
+			<index name="IX_block_chain_POA_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="calendar" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="start_date" type="datetime" jt="92" mandatory="y" />
+			<column name="notify_me" type="int" jt="4" />
+			<column name="description" type="nvarchar" length="1000" jt="12" />
+			<column name="title" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="end_date" type="datetime" jt="92" mandatory="y" />
+			<column name="meeting_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="car_info" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="car_number" type="nvarchar" length="200" jt="12" />
+			<column name="car_color" type="nvarchar" length="200" jt="12" />
+			<column name="car_country" type="nvarchar" length="200" jt="12" />
+			<column name="car_type" type="nvarchar" length="200" jt="12" />
+			<column name="car_motor" type="nvarchar" length="250" jt="12" />
+			<column name="car_base" type="nvarchar" length="250" jt="12" />
+			<column name="car_class" type="nvarchar" length="200" jt="12" />
+			<column name="car_issued" type="int" jt="4" />
+			<column name="app_id" type="int" jt="4" />
+		</table>
+		<table name="chatbot_attachments" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="order" type="int" jt="4" mandatory="y" />
+			<column name="title_ar" type="nvarchar" length="500" jt="12" />
+			<column name="title_en" type="nvarchar" length="500" jt="12" />
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="chatbot_fields" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="field_name_ar" type="nvarchar" length="50" jt="12" />
+			<column name="field_name_en" type="nvarchar" length="50" jt="12" />
+			<column name="optional" type="bit" jt="-7" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="cancel_type" type="int" jt="4" />
+			<column name="type" type="nvarchar" length="50" jt="12" />
+			<column name="order_no" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="chatbot_parties" spec="" >
+			<column name="service_id" type="int" jt="4" />
+			<column name="party_id" type="int" jt="4" />
+			<column name="description" type="nvarchar" length="200" jt="12" />
+			<column name="isowner" type="bit" jt="-7" />
+			<column name="sign_required" type="bit" jt="-7" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="chatbot_services" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="service_description_ar" type="nvarchar" length="500" jt="12" />
+			<column name="service_description_en" type="nvarchar" length="500" jt="12" />
+			<column name="submit_url" type="nvarchar" length="200" jt="12" />
+			<column name="check_url" type="nvarchar" length="200" jt="12" />
+			<column name="service_name_ar" type="nvarchar" length="200" jt="12" />
+			<column name="service_name_en" type="nvarchar" length="200" jt="12" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="title" type="nvarchar" length="500" jt="12" />
+			<column name="is_private" type="bit" jt="-7" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="country" spec="" >
+			<column name="CNT_ID" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="CNT_Country_EN" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Country_AR" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Official_name_EN" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Official_name_AR" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Region_EN" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Continent_AR" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Continent_EN" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Region_AR" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_Capital_EN" type="nvarchar" length="65" jt="12" />
+			<column name="CNT_Capital_AR" type="nvarchar" length="100" jt="12" />
+			<column name="CNT_ISO2" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_ISO3" type="nvarchar" length="64" jt="12" />
+			<column name="CNT_GLOBAL_CODE" type="nvarchar" length="16" jt="12" />
+			<column name="CNT_REG_ID_FK" type="int" jt="4" />
+			<column name="CNT_CON_ID_FK" type="int" jt="4" />
+			<column name="UG_ID" type="int" jt="4" />
+		</table>
+		<table name="death_doh_Info" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="entity_code" type="nvarchar" length="255" jt="12" />
+			<column name="transaction_id" type="nvarchar" length="255" jt="12" />
+			<column name="operation_type_id" type="int" jt="4" mandatory="y" />
+			<column name="unique_id_type" type="int" jt="4" mandatory="y" />
+			<column name="death_reference_no" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="full_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="first_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="second_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="family_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="full_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="first_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="second_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="family_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="date_of_birth" type="datetime" jt="92" />
+			<column name="gender_code" type="nvarchar" length="10" jt="12" />
+			<column name="gender_description_english" type="nvarchar" length="255" jt="12" />
+			<column name="gender_description_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="nationality_code" type="nvarchar" length="5" jt="12" />
+			<column name="nationality_english" type="nvarchar" length="255" jt="12" />
+			<column name="nationality_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="other_document_type" type="nvarchar" length="5" jt="12" />
+			<column name="other_document_number" type="nvarchar" length="255" jt="12" />
+			<column name="Person_emirates_iD" type="nvarchar" length="15" jt="12" />
+			<column name="family_book_number" type="nvarchar" length="25" jt="12" />
+			<column name="passport_number" type="nvarchar" length="25" jt="12" />
+			<column name="unified_number" type="nvarchar" length="25" jt="12" />
+			<column name="driver_license_number" type="nvarchar" length="25" jt="12" />
+			<column name="religion_code" type="nvarchar" length="5" jt="12" />
+			<column name="religion_english" type="nvarchar" length="255" jt="12" />
+			<column name="religion_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="marital_status_code" type="nvarchar" length="10" jt="12" />
+			<column name="marital_status_description_english" type="nvarchar" length="255" jt="12" />
+			<column name="marital_status_description_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="eID_issue_date" type="datetime" jt="92" />
+			<column name="eID_expiry_date" type="datetime" jt="92" />
+			<column name="passport_issue_date" type="datetime" jt="92" />
+			<column name="passport_expiry_date" type="datetime" jt="92" />
+			<column name="town_number" type="nvarchar" length="25" jt="12" />
+			<column name="resident_emirate_code" type="nvarchar" length="5" jt="12" />
+			<column name="resident_emirate_english" type="nvarchar" length="255" jt="12" />
+			<column name="resident_emirate_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="resident_city_code" type="nvarchar" length="5" jt="12" />
+			<column name="resident_city_english" type="nvarchar" length="255" jt="12" />
+			<column name="resident_city_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="deceased_emirate_code" type="nvarchar" length="5" jt="12" />
+			<column name="deceased_emirate_english" type="nvarchar" length="255" jt="12" />
+			<column name="deceased_emirate_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="reported_hospital_code" type="nvarchar" length="50" jt="12" />
+			<column name="reported_hospital_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="reported_hospital_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="physician_name" type="nvarchar" length="255" jt="12" />
+			<column name="insurance_company_code" type="nvarchar" length="25" jt="12" />
+			<column name="insurance_company_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="insurance_company_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="insurance_card_number" type="nvarchar" length="255" jt="12" />
+			<column name="death_city_code" type="nvarchar" length="3" jt="12" />
+			<column name="death_city_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="death_city_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="death_cityOthers" type="nvarchar" length="255" jt="12" />
+			<column name="death_place" type="nvarchar" length="255" jt="12" />
+			<column name="death_placeOthers" type="nvarchar" length="255" jt="12" />
+			<column name="occupation_category" type="nvarchar" length="255" jt="12" />
+			<column name="occupation_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="occupation_others" type="nvarchar" length="255" jt="12" />
+			<column name="dateof_death" type="datetime" jt="92" />
+			<column name="death_registration_date" type="nvarchar" length="255" jt="12" />
+			<column name="informant_first_name" type="nvarchar" length="255" jt="12" />
+			<column name="informant_family_name" type="nvarchar" length="255" jt="12" />
+			<column name="informant_mobile_number" type="nvarchar" length="255" jt="12" />
+			<column name="informant_relationship" type="nvarchar" length="255" jt="12" />
+			<column name="relation_to_deceased_code" type="nvarchar" length="255" jt="12" />
+			<column name="relation_to_deceased_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="relation_to_deceased_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="actual_causeof_death_code" type="nvarchar" length="255" jt="12" />
+			<column name="actual_causeof_death_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="actual_causeof_death_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="intermediate_causeof_death_code" type="nvarchar" length="255" jt="12" />
+			<column name="intermediate_causeof_death_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="intermediate_causeof_death_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="immediate_causeof_death_code" type="nvarchar" length="255" jt="12" />
+			<column name="immediate_causeof_death_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="immediate_causeof_death_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="significant_causeof_death_code" type="nvarchar" length="255" jt="12" />
+			<column name="significant_causeof_death_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="significant_causeof_death_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="mannerof_death_code" type="nvarchar" length="255" jt="12" />
+			<column name="mannerof_death_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="mannerof_death_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="is_government_facility" type="nvarchar" length="255" jt="12" />
+			<column name="created_date" type="datetime" jt="92" mandatory="y" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="scan_to_cancel_related_app" type="bit" jt="-7" />
+		</table>
+		<table name="death_doh_info_consumer_entity" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="entity_code" type="nvarchar" length="10" jt="12" mandatory="y" />
+			<column name="death_info_id" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="death_emarit_id" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="emarit_id" type="nvarchar" length="30" jt="12" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" mandatory="y" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="reason" type="nvarchar" length="250" jt="12" />
+			<column name="scan_to_cancel_related_app" type="bit" jt="-7" />
+			<column name="death_date" type="datetime" jt="92" />
+		</table>
+		<table name="death_info_moh_nationality" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="250" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_Emirate" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="id_for_party" type="int" jt="4" />
+		</table>
+		<table name="death_moh_Info" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="transaction_id" type="nvarchar" length="255" jt="12" />
+			<column name="entity_name" type="nvarchar" length="255" jt="12" />
+			<column name="document_type" type="int" jt="4" />
+			<column name="document_id" type="nvarchar" length="55" jt="12" />
+			<column name="quaid_number" type="nvarchar" length="100" jt="12" />
+			<column name="personal_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="personal_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="gender" type="nvarchar" length="10" jt="12" />
+			<column name="nationality" type="int" jt="4" />
+			<column name="nationality_desc_english" type="nvarchar" length="255" jt="12" />
+			<column name="nationality_desc_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="emirate" type="int" jt="4" />
+			<column name="emirate_desc_english" type="nvarchar" length="255" jt="12" />
+			<column name="emirate_desc_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="city_code" type="int" jt="4" />
+			<column name="city_in_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="city_in_english" type="nvarchar" length="255" jt="12" />
+			<column name="date_of_birth" type="datetime" jt="92" />
+			<column name="date_of_death" type="datetime" jt="92" />
+			<column name="hospital_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="hospital_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="place_of_death_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="place_of_death_english" type="nvarchar" length="255" jt="12" />
+			<column name="occupation" type="int" jt="4" />
+			<column name="emirates_id" type="nvarchar" length="20" jt="12" />
+			<column name="family_id" type="nvarchar" length="255" jt="12" />
+			<column name="family_number" type="nvarchar" length="255" jt="12" />
+			<column name="town_number" type="nvarchar" length="255" jt="12" />
+			<column name="issue_date" type="datetime" jt="92" />
+			<column name="immediate_death_reasoncode" type="nvarchar" length="255" jt="12" />
+			<column name="intermediate_death_reasoncode" type="nvarchar" length="255" jt="12" />
+			<column name="significant_reason" type="nvarchar" length="255" jt="12" />
+			<column name="underlying_death_reason_code" type="nvarchar" length="255" jt="12" />
+			<column name="transaction_date" type="datetime" jt="92" />
+			<column name="notifier_name_english" type="nvarchar" length="255" jt="12" />
+			<column name="notifier_name_arabic" type="nvarchar" length="255" jt="12" />
+			<column name="notifier_contact_number" type="nvarchar" length="255" jt="12" />
+			<column name="notifier_relationship_code" type="int" jt="4" />
+			<column name="notifier_relation_to_deceased" type="nvarchar" length="255" jt="12" />
+			<column name="created_date" type="datetime" jt="92" mandatory="y" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="scan_to_cancel_related_app" type="bit" jt="-7" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="nationality" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="city_code" options=" ASC" />
+			</index>
+			<index name="FK_3_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="emirate" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="occupation" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="document_type" options=" ASC" />
+			</index>
+		</table>
+		<table name="death_moh_city" spec="" >
+			<column name="code" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="100" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_death_places" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="100" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_document_ids" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description" type="nvarchar" length="100" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_hospitals" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="100" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_proffessions" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="250" jt="12" mandatory="y" />
+		</table>
+		<table name="death_moh_relation_to_baby" spec="" >
+			<column name="relationship_code" type="int" jt="4" mandatory="y" />
+			<column name="description_en" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<column name="description_ar" type="nvarchar" length="150" jt="12" mandatory="y" />
+		</table>
+		<table name="document_storage" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="file_name" type="varchar" length="50" jt="12" mandatory="y" />
+			<column name="file_path" type="varchar" length="50" jt="12" mandatory="y" />
+			<column name="id_user" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="document_type_kind" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="document_type_id" type="int" jt="4" mandatory="y" />
+			<column name="type" type="tinyint" jt="-6" />
+		</table>
+		<table name="emp_logger" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="logging_date" type="datetime" jt="92" />
+			<column name="first_login" type="datetime" jt="92" />
+			<column name="previous_login_list" type="nvarchar" length="3000" jt="12" />
+		</table>
+		<table name="employee_setting" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="nvarchar" length="50" jt="12" />
+			<column name="entity_code" type="nvarchar" length="50" jt="12" />
+			<column name="terminal_id" type="nvarchar" length="50" jt="12" />
+			<column name="session_token" type="nvarchar" length="50" jt="12" />
+			<column name="tokens" type="nvarchar" length="50" jt="12" />
+			<column name="expired_session_token" type="datetime" jt="92" />
+			<column name="channel" type="nvarchar" length="50" jt="12" />
+			<column name="location_code" type="nvarchar" length="50" jt="12" />
+			<column name="transactionReference" type="nvarchar" length="50" jt="12" />
+			<column name="sourceReference" type="nvarchar" length="50" jt="12" />
+			<column name="enotary_id" type="int" jt="4" mandatory="y" />
+			<column name="active_directory_account" type="nvarchar" length="100" jt="12" />
+			<column name="default_show_cam" type="bit" jt="-7" />
+			<column name="default_mute_voice" type="bit" jt="-7" />
+			<column name="default_view_cards" type="bit" jt="-7" />
+			<column name="notary_location_id" type="int" jt="4" />
+		</table>
+		<table name="entity_services" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="entity_id" type="int" jt="4" mandatory="y" />
+			<column name="service_name" type="nvarchar" length="500" jt="12" />
+			<column name="service_code" type="nvarchar" length="50" jt="12" />
+			<column name="service_id" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="epos_machine" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="nvarchar" length="50" jt="12" />
+			<column name="entity_code" type="nvarchar" length="50" jt="12" />
+			<column name="terminal_id" type="nvarchar" length="50" jt="12" />
+			<column name="session_token" type="nvarchar" length="50" jt="12" />
+			<column name="tokens" type="nvarchar" length="50" jt="12" />
+			<column name="expired_session_token" type="datetime" jt="92" />
+			<column name="channel" type="nvarchar" length="50" jt="12" />
+			<column name="location_code" type="nvarchar" length="50" jt="12" />
+			<column name="transactionReference" type="nvarchar" length="50" jt="12" />
+			<column name="sourceReference" type="nvarchar" length="50" jt="12" />
+			<column name="enotary_id" type="int" jt="4" />
+		</table>
+		<table name="file_configuration" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="type" type="nvarchar" length="50" jt="12" />
+			<column name="extension" type="nvarchar" length="50" jt="12" />
+			<column name="max_size" type="int" jt="4" />
+			<column name="min_size" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+		</table>
+		<table name="g2g_requests" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="reqDate" type="datetime" jt="92" mandatory="y" />
+			<column name="api_name" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="reqest" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="response" type="nvarchar" length="500" jt="12" mandatory="y" />
+		</table>
+		<table name="global_day_off" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="start_date" type="date" jt="91" mandatory="y" />
+			<column name="end_date" type="date" jt="91" mandatory="y" />
+			<column name="reason_shortcut" type="nvarchar" length="100" jt="12" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+		</table>
+		<table name="inspector_apps" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="note" type="nvarchar" length="500" jt="12" />
+		</table>
+		<table name="location" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="name_shortcut" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="parent_location_id" type="int" jt="4" />
+		</table>
+		<table name="meeting" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="topic" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="description" type="nvarchar" length="1000" jt="12" />
+			<column name="start_date" type="datetime" jt="92" mandatory="y" />
+			<column name="end_date" type="datetime" jt="92" mandatory="y" />
+			<column name="time_zone" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="password" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="password_req" type="bit" jt="-7" />
+			<column name="meeting_id" type="nvarchar" length="20" jt="12" mandatory="y" />
+			<column name="status" type="int" jt="4" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="order_no" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="meeting_log" type="nvarchar" length="1000" jt="12" />
+		</table>
+		<table name="meeting_logging" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="meeting_id" type="int" jt="4" mandatory="y" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="login_date" type="datetime" jt="92" mandatory="y" />
+			<column name="is_moderator" type="bit" jt="-7" mandatory="y" />
+			<column name="first_login" type="datetime" jt="92" mandatory="y" />
+			<column name="previous_login_list" type="nvarchar(max)" jt="12" />
+			<index name="IX_Meeting_meeting_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="meeting_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="notary_place" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="emirate_value_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+		</table>
+		<table name="notification_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="action_id" type="int" jt="4" mandatory="y" />
+			<column name="notification_template_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="notification_log" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="notification_title" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="notification_body" type="nvarchar" length="1500" jt="12" mandatory="y" />
+			<column name="notification_channel_id" type="int" jt="4" mandatory="y" />
+			<column name="created_at" type="datetime" jt="92" />
+			<column name="send_report_id" type="nvarchar(max)" jt="12" />
+			<column name="updated_at" type="datetime" jt="92" />
+			<column name="is_sent" type="tinyint" jt="-6" />
+			<column name="sent_count" type="tinyint" jt="-6" mandatory="y" />
+			<column name="report_value_id" type="nvarchar(max)" jt="12" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="to_address" type="nvarchar" length="1500" jt="12" />
+			<column name="lang" type="nchar" length="10" jt="1" />
+			<column name="hostsetting" type="nvarchar(max)" jt="12" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="pns_application_id" type="int" jt="4" />
+			<column name="notify_type" type="int" jt="4" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="notification_channel_id" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="notification_log_2021" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="notification_title" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="notification_body" type="nvarchar" length="1000" jt="12" mandatory="y" />
+			<column name="notification_channel_id" type="int" jt="4" mandatory="y" />
+			<column name="created_at" type="datetime" jt="92" />
+			<column name="send_report_id" type="nvarchar" length="200" jt="12" />
+			<column name="updated_at" type="datetime" jt="92" />
+			<column name="is_sent" type="tinyint" jt="-6" />
+			<column name="sent_count" type="tinyint" jt="-6" mandatory="y" />
+			<column name="report_value_id" type="nvarchar" length="200" jt="12" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="to_address" type="nvarchar" length="200" jt="12" />
+			<column name="lang" type="nchar" length="10" jt="1" />
+			<column name="hostsetting" type="nvarchar" length="500" jt="12" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="pns_application_id" type="int" jt="4" />
+			<index name="idx_is_sent_2021" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="is_sent" options=" ASC" />
+			</index>
+		</table>
+		<table name="notification_log_2023" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="notification_title" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="notification_body" type="nvarchar" length="1500" jt="12" mandatory="y" />
+			<column name="notification_channel_id" type="int" jt="4" mandatory="y" />
+			<column name="created_at" type="datetime" jt="92" />
+			<column name="send_report_id" type="nvarchar(max)" jt="12" />
+			<column name="updated_at" type="datetime" jt="92" />
+			<column name="is_sent" type="tinyint" jt="-6" />
+			<column name="sent_count" type="tinyint" jt="-6" mandatory="y" />
+			<column name="report_value_id" type="nvarchar(max)" jt="12" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="to_address" type="nvarchar" length="1500" jt="12" />
+			<column name="lang" type="nchar" length="10" jt="1" />
+			<column name="hostsetting" type="nvarchar(max)" jt="12" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="pns_application_id" type="int" jt="4" />
+			<column name="notify_type" type="int" jt="4" />
+		</table>
+		<table name="notification_template" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="notification_name_shortcut" type="nvarchar" length="100" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="notification_template_detail" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="notification_template_id" type="int" jt="4" mandatory="y" />
+			<column name="notification_channel_id" type="int" jt="4" mandatory="y" />
+			<column name="title_shortcut" type="nvarchar" length="250" jt="12" />
+			<column name="body_shortcut" type="nvarchar" length="250" jt="12" />
+			<column name="change_able" type="bit" jt="-7" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="otp_log" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="generated_date" type="datetime" jt="92" mandatory="y" />
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="otp_code" type="nchar" length="10" jt="1" />
+			<index name="IX_otp_log_user_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="payment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="receipt_no" type="nvarchar" length="100" jt="12" />
+			<column name="total_amount" type="float" jt="8" />
+			<column name="invoice_no" type="nvarchar" length="200" jt="12" />
+			<column name="status" type="nvarchar" length="200" jt="12" />
+			<column name="payment_status" type="nvarchar" length="200" jt="12" />
+			<column name="payment_date" type="datetime" jt="92" />
+			<column name="collection_center_fee" type="nvarchar" length="200" jt="12" />
+			<column name="secure_hash" type="nvarchar" length="200" jt="12" />
+			<column name="e_dirham_fee" type="nvarchar" length="200" jt="12" />
+			<column name="e_service_data" type="nvarchar" length="1500" jt="12" />
+			<column name="status_message" type="nvarchar" length="200" jt="12" />
+			<column name="confirmation_id" type="nvarchar" length="200" jt="12" />
+			<column name="pun" type="nvarchar" length="200" jt="12" />
+			<column name="payment_type" type="nvarchar" length="200" jt="12" />
+			<column name="payment_source" type="nvarchar" length="200" jt="12" />
+			<column name="payment_method_type" type="nvarchar" length="200" jt="12" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="transaction_response_date" type="datetime" jt="92" />
+			<column name="action_id" type="int" jt="4" />
+			<column name="printed" type="bit" jt="-7" />
+			<column name="num_of_copies" type="int" jt="4" />
+			<column name="BeginDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(sysutcdatetime())]]></defo>
+			</column>
+			<column name="EndDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(CONVERT([datetime2],'9999-12-31 23:59:59.9999999'))]]></defo>
+			</column>
+			<column name="actual_paid" type="float" jt="8" />
+			<column name="old_id" type="bigint" jt="-5" />
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="action_id" options=" ASC" />
+			</index>
+			<index name="idx_is_pay_application_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+			<index name="idx_is_pay_service_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+			<index name="idx_is_pay_user_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+			<index name="IX_payment_application_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="payment_details" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="payment_id" type="int" jt="4" />
+			<column name="service_main_code" type="nvarchar" length="100" jt="12" />
+			<column name="service_sub_code" type="nvarchar" length="100" jt="12" />
+			<column name="price" type="float" jt="8" />
+			<column name="quantity" type="int" jt="4" />
+			<column name="amountWithFees" type="float" jt="8" />
+			<column name="amountWithoutFees" type="float" jt="8" />
+			<column name="ownerFees" type="float" jt="8" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="BeginDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(sysutcdatetime())]]></defo>
+			</column>
+			<column name="EndDate" type="datetime2" length="7" jt="92" mandatory="y" >
+				<defo><![CDATA[(CONVERT([datetime2],'9999-12-31 23:59:59.9999999'))]]></defo>
+			</column>
+			<column name="adib_service_code" type="nvarchar" length="50" jt="12" />
+			<index name="IX_payment_detail_payment_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="payment_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="payment_gate_attempt" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="payment_id" type="int" jt="4" mandatory="y" />
+			<column name="paid_attempt_date" type="datetime" jt="92" mandatory="y" />
+			<column name="secure_hash" type="nvarchar" length="200" jt="12" />
+			<column name="e_dirham_fee" type="nvarchar" length="200" jt="12" />
+			<column name="e_service_data" type="nvarchar" length="2500" jt="12" />
+			<column name="confirmation_id" type="nvarchar" length="200" jt="12" />
+			<column name="pun" type="nvarchar" length="200" jt="12" />
+			<column name="collection_center_fee" type="nvarchar" length="200" jt="12" />
+			<column name="payment_attempt_invoice_no" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="updated_date" type="datetime" jt="92" />
+			<column name="updated_by" type="int" jt="4" />
+			<column name="checkout_id" type="nvarchar" length="500" jt="12" />
+			<index name="IX_payment_gate_attempt_payment_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="payment_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_adm_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="shortcut" type="varchar" length="50" jt="12" />
+			<column name="action_type_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="action_kind" type="smallint" jt="5" />
+		</table>
+		<table name="pns_adm_service" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="ug_id" type="int" jt="4" />
+			<column name="shortcut" type="varchar" length="50" jt="12" />
+			<column name="fee" type="int" jt="4" />
+			<column name="icon" type="varchar" length="200" jt="12" />
+			<column name="order" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="service_kind_no" type="int" jt="4" />
+			<column name="target_service" type="int" jt="4" />
+			<column name="templated" type="bit" jt="-7" />
+			<column name="default_user" type="int" jt="4" />
+			<column name="has_reason" type="bit" jt="-7" />
+			<column name="service_result" type="smallint" jt="5" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="block_target" type="bit" jt="-7" />
+			<column name="has_document" type="bit" jt="-7" />
+			<column name="approval_stage" type="int" jt="4" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="document_type_id" type="int" jt="4" />
+			<column name="limited_time" type="bit" jt="-7" />
+			<column name="khadamatiServiceNo" type="varchar" length="50" jt="12" />
+			<column name="external_file_required" type="smallint" jt="5" />
+			<column name="guid_file_path_ar" type="nvarchar" length="250" jt="12" />
+			<column name="guid_file_path_en" type="nvarchar" length="250" jt="12" />
+			<column name="delivery" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="alias_name" type="nvarchar" length="200" jt="12" />
+			<column name="has_fee" type="bit" jt="-7" />
+			<column name="uae_pass" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="limited_submit" type="bit" jt="-7" />
+			<column name="at_least_attachments_type_ids" type="nvarchar" length="200" jt="12" />
+			<column name="linking_id" type="nvarchar" length="50" jt="12" />
+			<column name="mobile_linking_id" type="nvarchar" length="50" jt="12" />
+			<column name="office_info_show" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="multi_submit" type="bit" jt="-7" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="ug_id" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="document_type_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_adm_service_document_type" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<column name="document_type_id" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="pns_adm_stage" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" />
+			<column name="shortcut" type="varchar" length="50" jt="12" />
+			<column name="period_for_archive" type="int" jt="4" />
+			<column name="period_for_late" type="int" jt="4" />
+			<column name="order_no" type="int" jt="4" />
+			<column name="fee" type="int" jt="4" />
+			<column name="stage_type_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="icon" type="varchar" length="50" jt="12" />
+			<column name="khadamatiServiceNo" type="varchar" length="50" jt="12" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage_type_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_adm_stage_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="stage_id" type="int" jt="4" />
+			<column name="action_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="show_order" type="tinyint" jt="-6" />
+			<column name="enabled" type="bit" jt="-7" >
+				<defo><![CDATA[((1))]]></defo>
+			</column>
+			<column name="group" type="varchar" length="25" jt="12" >
+				<defo><![CDATA[('action_btn')]]></defo>
+			</column>
+		</table>
+		<table name="pns_app_related_content" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="title_shortcut" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="content" type="nvarchar" length="1000" jt="12" mandatory="y" />
+			<column name="content_url" type="varchar" length="100" jt="12" />
+		</table>
+		<table name="pns_app_transaction" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" />
+			<column name="file_name" type="varchar" length="100" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="content" type="ntext" jt="-1" />
+			<column name="transaction_no" type="nvarchar" length="100" jt="12" />
+			<column name="document_url" type="nvarchar" length="100" jt="12" />
+			<column name="transaction_start_date" type="datetime" jt="92" />
+			<column name="transaction_end_date" type="datetime" jt="92" />
+			<column name="unlimited_validity" type="bit" jt="-7" />
+			<column name="transaction_status" type="int" jt="4" />
+			<column name="transaction_created_date" type="datetime" jt="92" />
+			<column name="qrcode" type="varchar" length="100" jt="12" />
+			<column name="title" type="nvarchar" length="150" jt="12" />
+			<column name="contract_value" type="float" jt="8" />
+			<column name="exist" type="bit" jt="-7" />
+			<column name="uae_pass_url" type="nvarchar" length="200" jt="12" />
+			<column name="transactionrefno" type="nvarchar" length="50" jt="12" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="last_updated_by" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="application_no" type="nvarchar" length="100" jt="12" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="current_stage_id" type="int" jt="4" />
+			<column name="state_id" type="int" jt="4" />
+			<column name="note" type="nvarchar" length="500" jt="12" />
+			<column name="app_last_update_date" type="datetime" jt="92" />
+			<column name="row_version" type="timestamp" jt="93" />
+			<column name="application_date" type="datetime" jt="92" />
+			<column name="channel" type="int" jt="4" />
+			<column name="reason" type="int" jt="4" />
+			<column name="locked" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="last_reader" type="int" jt="4" />
+			<column name="last_read_date" type="datetime" jt="92" />
+			<column name="owner" type="int" jt="4" />
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_7" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="state_id" options=" ASC" />
+			</index>
+			<index name="FK_8" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="channel" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_application_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="mime_type" type="nvarchar" length="200" jt="12" />
+			<column name="size_" type="bigint" jt="-5" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="attachment_id" type="int" jt="4" />
+			<column name="file_name" type="nvarchar" length="500" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="note" type="nvarchar" length="200" jt="12" />
+			<column name="OldAttachId" type="bigint" jt="-5" />
+			<column name="OldId" type="int" jt="4" />
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_application_objection" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="full_name" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="phone" type="nvarchar" length="50" jt="12" />
+			<column name="email" type="nvarchar" length="75" jt="12" />
+			<column name="birthday" type="date" jt="91" />
+			<column name="nationality" type="int" jt="4" />
+			<column name="gender" type="nchar" length="10" jt="1" />
+			<column name="emirates_id" type="nvarchar" length="50" jt="12" />
+			<column name="address" type="nvarchar" length="200" jt="12" />
+			<column name="emara_id" type="int" jt="4" />
+			<column name="city" type="nvarchar" length="50" jt="12" />
+			<column name="reason" type="nvarchar" length="300" jt="12" mandatory="y" />
+			<column name="note" type="nvarchar" length="300" jt="12" />
+			<column name="created_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_application_objection_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="objection_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment" type="nvarchar" length="150" jt="12" mandatory="y" />
+		</table>
+		<table name="pns_application_party" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="party_id" type="int" jt="4" />
+			<column name="transaction_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="is_owner" type="bit" jt="-7" />
+			<column name="party_type_value_id" type="int" jt="4" />
+			<column name="full_name" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<column name="mobile" type="varchar" length="40" jt="12" />
+			<column name="email" type="varchar" length="150" jt="12" />
+			<column name="nationality" type="int" jt="4" />
+			<column name="birth_date" type="date" jt="91" />
+			<column name="marital_status" type="int" jt="4" />
+			<column name="gender" type="int" jt="4" />
+			<column name="emirates_id_no" type="varchar" length="50" jt="12" />
+			<column name="id_expiration_date" type="date" jt="91" />
+			<column name="id_attachment" type="varchar" length="200" jt="12" />
+			<column name="unified_number" type="varchar" length="50" jt="12" />
+			<column name="sign_required" type="bit" jt="-7" />
+			<column name="signed" type="bit" jt="-7" />
+			<column name="sign_type" type="int" jt="4" />
+			<column name="sign_date" type="datetime" jt="92" />
+			<column name="sign_url" type="varchar" length="150" jt="12" />
+			<column name="editable_sign" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="address" type="nvarchar" length="255" jt="12" />
+			<column name="description" type="nvarchar" length="100" jt="12" />
+			<column name="emirate" type="int" jt="4" />
+			<column name="city" type="nvarchar" length="150" jt="12" />
+			<column name="alternative_email" type="varchar" length="100" jt="12" />
+			<column name="notary_id" type="int" jt="4" />
+			<column name="telephone_no" type="nvarchar" length="150" jt="12" />
+			<column name="street_no" type="nvarchar" length="150" jt="12" />
+			<column name="passport_no" type="nvarchar" length="150" jt="12" />
+			<column name="full_name_en" type="nvarchar" length="200" jt="12" />
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="party_id" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="last_updated_by" options=" ASC" />
+			</index>
+			<index name="FK_6" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="gender" options=" ASC" />
+			</index>
+			<index name="FK_7" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="notary_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_application_party_extra_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="application_party_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment_id" type="int" jt="4" />
+			<column name="attachment_name" type="nvarchar" length="100" jt="12" />
+			<column name="attachment_url" type="varchar" length="200" jt="12" />
+			<column name="number" type="varchar" length="100" jt="12" />
+			<column name="country_of_Issue" type="int" jt="4" />
+			<column name="expiration_date" type="date" jt="91" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+		</table>
+		<table name="pns_application_track" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="stage_id" type="int" jt="4" />
+			<column name="next_stage_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="note" type="nvarchar" length="500" jt="12" />
+			<column name="location_id" type="int" jt="4" />
+			<column name="note_kind" type="smallint" jt="5" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage_id" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="next_stage_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_black_list_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="application_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="is_freaze" type="bit" jt="-7" >
+				<defo><![CDATA[((1))]]></defo>
+			</column>
+			<column name="freaze_reason" type="nvarchar" length="200" jt="12" />
+			<column name="unfreaze_reason" type="nvarchar" length="200" jt="12" />
+			<column name="app_kind" type="nvarchar" length="200" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="application_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_location" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="name_shortcut" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="parent_location_id" type="int" jt="4" />
+		</table>
+		<table name="pns_notification_action" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="action_id" type="int" jt="4" mandatory="y" />
+			<column name="notification_template_id" type="int" jt="4" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" />
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+		</table>
+		<table name="pns_office" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="int" jt="4" />
+			<column name="office_name" type="nvarchar" length="500" jt="12" />
+			<column name="office_address" type="nvarchar" length="500" jt="12" />
+			<column name="office_email" type="nvarchar" length="500" jt="12" />
+			<column name="office_phone" type="nvarchar" length="500" jt="12" />
+			<column name="disabled" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="create_date" type="datetime" jt="92" />
+			<column name="app_id" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_payment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="receipt_no" type="nvarchar" length="100" jt="12" />
+			<column name="total_amount" type="float" jt="8" />
+			<column name="invoice_no" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="status" type="nvarchar" length="200" jt="12" />
+			<column name="payment_status" type="nvarchar" length="200" jt="12" />
+			<column name="payment_date" type="datetime" jt="92" />
+			<column name="status_message" type="nvarchar" length="200" jt="12" />
+			<column name="payment_type" type="nvarchar" length="200" jt="12" />
+			<column name="payment_source" type="nvarchar" length="200" jt="12" />
+			<column name="payment_method_type" type="nvarchar" length="200" jt="12" />
+			<column name="application_id" type="int" jt="4" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="user_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="transaction_response_date" type="datetime" jt="92" />
+			<column name="action_id" type="int" jt="4" />
+			<column name="printed" type="bit" jt="-7" />
+			<column name="actual_paid" type="float" jt="8" />
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+			<index name="FK_5" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="action_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_payment_details" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="payment_id" type="int" jt="4" />
+			<column name="service_main_code" type="nvarchar" length="100" jt="12" />
+			<column name="service_sub_code" type="nvarchar" length="100" jt="12" />
+			<column name="price" type="float" jt="8" />
+			<column name="quantity" type="int" jt="4" />
+			<column name="amountWithFees" type="float" jt="8" />
+			<column name="amountWithoutFees" type="float" jt="8" />
+			<column name="ownerFees" type="float" jt="8" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" >
+				<defo><![CDATA[('active')]]></defo>
+			</column>
+			<column name="adib_service_code" type="nvarchar" length="50" jt="12" />
+		</table>
+		<table name="pns_payment_gate_attempt" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="payment_id" type="int" jt="4" mandatory="y" />
+			<column name="paid_attempt_date" type="datetime" jt="92" mandatory="y" />
+			<column name="secure_hash" type="nvarchar" length="200" jt="12" />
+			<column name="e_dirham_fee" type="nvarchar" length="200" jt="12" />
+			<column name="e_service_data" type="nvarchar(max)" jt="12" />
+			<column name="confirmation_id" type="nvarchar" length="200" jt="12" />
+			<column name="pun" type="nvarchar" length="200" jt="12" />
+			<column name="collection_center_fee" type="nvarchar" length="200" jt="12" />
+			<column name="payment_attempt_invoice_no" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="updated_date" type="datetime" jt="92" />
+			<column name="updated_by" type="int" jt="4" />
+			<column name="checkout_id" type="nvarchar" length="500" jt="12" />
+		</table>
+		<table name="pns_related_content" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="title_shortcut" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="content" type="nvarchar(max)" jt="12" mandatory="y" />
+			<column name="is_output" type="bit" jt="-7" mandatory="y" />
+			<column name="stage_id" type="int" jt="4" />
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_service_stage_fee" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="stage_no" type="int" jt="4" mandatory="y" />
+			<column name="fee_no" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" mandatory="y" />
+		</table>
+		<table name="pns_stage_master_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="stage_id" type="int" jt="4" />
+			<column name="master_attachment_id" type="int" jt="4" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="required" type="bit" jt="-7" />
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_sys_execution" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="action_id" type="int" jt="4" mandatory="y" />
+			<column name="execution_order" type="int" jt="4" mandatory="y" />
+			<column name="to_execute" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="parameter1" type="nvarchar" length="500" jt="12" />
+			<column name="parameter2" type="nvarchar" length="200" jt="12" />
+			<column name="method" type="nvarchar" length="5" jt="12" />
+		</table>
+		<table name="pns_table_name" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="db" type="nvarchar" length="50" jt="12" />
+			<column name="name_en" type="nvarchar" length="50" jt="12" />
+			<column name="name_ar" type="nvarchar" length="50" jt="12" />
+		</table>
+		<table name="pns_target_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="target_app_id" type="int" jt="4" />
+			<column name="target_app_desc" type="nvarchar" length="500" jt="12" />
+			<column name="target_app_document" type="nvarchar" length="100" jt="12" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+		</table>
+		<table name="pns_target_service" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<column name="target_service_id" type="int" jt="4" />
+			<column name="target_document_type_id" type="int" jt="4" />
+		</table>
+		<table name="pns_template" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="document_type_id" type="int" jt="4" />
+			<column name="title_shortcut" type="nvarchar" length="50" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="start_effective_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="type" type="tinyint" jt="-6" />
+		</table>
+		<table name="pns_template_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment_id" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" />
+		</table>
+		<table name="pns_template_party" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" mandatory="y" />
+			<column name="party_id" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" />
+			<column name="sign_required" type="bit" jt="-7" />
+		</table>
+		<table name="pns_term" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="title" type="nvarchar" length="100" jt="12" />
+			<column name="content" type="nvarchar" length="2000" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="pns_transaction_fee" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="transaction_name_shortcut" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="value" type="float" jt="8" mandatory="y" />
+			<column name="sub_class" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="prime_class" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="multiplied" type="bit" jt="-7" mandatory="y" />
+			<column name="percentage" type="bit" jt="-7" mandatory="y" />
+			<column name="per_page" type="bit" jt="-7" mandatory="y" />
+			<column name="max_limited_tax" type="int" jt="4" />
+			<column name="more_than" type="int" jt="4" />
+			<column name="less_than" type="int" jt="4" />
+			<column name="notes" type="nvarchar" length="500" jt="12" />
+			<column name="limited_value" type="bit" jt="-7" mandatory="y" />
+			<column name="entity_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="entity_gl_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="service_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="service_gl_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="mapping_FMIS_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="adib_service_code" type="nvarchar" length="50" jt="12" />
+		</table>
+		<table name="pns_transaction_old_version" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="transaction_id" type="int" jt="4" mandatory="y" />
+			<column name="transaction_no" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="document_url" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="transaction_created_date" type="datetime" jt="92" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="start_effective_date" type="datetime" jt="92" />
+			<column name="end_effective_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="note" type="nvarchar" length="500" jt="12" />
+			<column name="old_transaction_id" type="int" jt="4" />
+		</table>
+		<table name="prisons" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="prison_name" type="nvarchar" length="500" jt="12" />
+			<column name="prison_email" type="nvarchar" length="500" jt="12" />
+		</table>
+		<table name="queue_processes" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="process_no" type="int" jt="4" mandatory="y" />
+			<column name="service_kind_no" type="int" jt="4" mandatory="y" />
+			<column name="expected_date_time" type="datetime" jt="92" mandatory="y" />
+			<column name="notify_low_level" type="bit" jt="-7" />
+			<column name="ticket_id" type="int" jt="4" mandatory="y" />
+			<column name="note" type="nvarchar" length="200" jt="12" />
+			<column name="provider" type="nvarchar" length="50" jt="12" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="15" jt="12" />
+			<column name="notify_high_level" type="bit" jt="-7" />
+			<column name="notify_medium_level" type="bit" jt="-7" />
+			<column name="status" type="tinyint" jt="-6" />
+		</table>
+		<table name="related_content" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="title_shortcut" type="varchar" length="100" jt="12" mandatory="y" />
+			<column name="content" type="nvarchar" length="1000" jt="12" mandatory="y" />
+			<column name="is_output" type="bit" jt="-7" mandatory="y" />
+			<column name="stage_id" type="int" jt="4" />
+			<column name="required" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="stage_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="related_data" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="show_application" type="bit" jt="-7" mandatory="y" />
+			<column name="show_transaction" type="bit" jt="-7" mandatory="y" />
+		</table>
+		<table name="role" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="name" type="nvarchar" length="100" jt="12" />
+			<column name="NormalizedName" type="nvarchar" length="256" jt="12" />
+			<column name="ConcurrencyStamp" type="nvarchar" length="300" jt="12" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+		</table>
+		<table name="role-claim" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="claim-type" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="claim-value" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="role-id" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="service_fee" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_no" type="int" jt="4" mandatory="y" />
+			<column name="fee_no" type="int" jt="4" mandatory="y" />
+			<column name="document_kind" type="int" jt="4" mandatory="y" />
+			<column name="process_kind" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" />
+		</table>
+		<table name="service_kind" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="service_kind_name_shortcut" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="employee_count" type="int" jt="4" mandatory="y" />
+			<column name="estimated_time_per_process" type="int" jt="4" mandatory="y" />
+			<column name="symbol" type="nvarchar" length="5" jt="12" mandatory="y" />
+			<column name="applications_per_notary" type="smallint" jt="5" />
+		</table>
+		<table name="shorten_url" spec="" >
+			<column name="guid_url" type="uniqueidentifier" jt="1" mandatory="y" />
+			<column name="url" type="nvarchar" length="1500" jt="12" mandatory="y" />
+		</table>
+		<table name="skipp_apps" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="skipp_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="stage_master_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="stage_id" type="int" jt="4" />
+			<column name="master_attachment_id" type="int" jt="4" />
+			<column name="template_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="required" type="bit" jt="-7" />
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="sys_execution" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="action_id" type="int" jt="4" mandatory="y" />
+			<column name="execution_order" type="int" jt="4" mandatory="y" />
+			<column name="to_execute" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="parameter1" type="nvarchar" length="500" jt="12" />
+			<column name="parameter2" type="nvarchar" length="200" jt="12" />
+			<column name="method" type="nvarchar" length="5" jt="12" />
+		</table>
+		<table name="sys_language" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="lang" type="varchar" length="10" jt="12" mandatory="y" />
+		</table>
+		<table name="sys_lookup_type" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="value" type="nvarchar" length="100" jt="12" />
+		</table>
+		<table name="sys_lookup_value" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="lookup_type_id" type="int" jt="4" />
+			<column name="shortcut" type="nvarchar" length="50" jt="12" />
+			<column name="bool_parameter" type="bit" jt="-7" />
+			<column name="order" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="lookup_type_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="sys_translation" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="shortcut" type="varchar" length="250" jt="12" mandatory="y" />
+			<column name="lang" type="varchar" length="5" jt="12" mandatory="y" />
+			<column name="value" type="nvarchar" length="2000" jt="12" mandatory="y" />
+		</table>
+		<table name="tab" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="tab_name_shortcut" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="link" type="nvarchar" length="200" jt="12" />
+			<column name="parent_id" type="int" jt="4" />
+			<column name="tab_order" type="int" jt="4" mandatory="y" />
+			<column name="icon" type="varbinary" length="1000" jt="-3" />
+			<column name="icon_string" type="nvarchar" length="250" jt="12" />
+		</table>
+		<table name="table_name" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="db" type="nvarchar" length="50" jt="12" />
+			<column name="name_en" type="nvarchar" length="50" jt="12" />
+			<column name="name_ar" type="nvarchar" length="50" jt="12" />
+		</table>
+		<table name="target_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="target_app_id" type="int" jt="4" />
+			<column name="target_app_desc" type="nvarchar" length="500" jt="12" />
+			<column name="target_app_document" type="nvarchar" length="150" jt="12" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" />
+			<index name="IX_target_application_app_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+			<index name="IX_target_application_target_app_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="target_app_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="target_service" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="service_id" type="int" jt="4" mandatory="y" />
+			<column name="target_service_id" type="int" jt="4" />
+			<column name="target_document_type_id" type="int" jt="4" />
+		</table>
+		<table name="template" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="document_type_id" type="int" jt="4" />
+			<column name="title_shortcut" type="nvarchar" length="250" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="type" type="tinyint" jt="-6" />
+			<column name="proactive" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="proactive_party" type="int" jt="4" />
+			<column name="uae_pass" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="smart" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="smart_content" type="nvarchar(max)" jt="12" />
+			<column name="external_party" type="bit" jt="-7" />
+			<column name="text" type="nvarchar(max)" jt="12" />
+			<column name="template_note" type="nvarchar" length="500" jt="12" />
+			<column name="template_info" type="nvarchar" length="200" jt="12" />
+			<column name="is_blockchain" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="skip" type="int" jt="4" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+		</table>
+		<table name="template_attachment" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" mandatory="y" />
+			<column name="attachment_id" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" />
+		</table>
+		<table name="template_entities" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="entity_name" type="nvarchar" length="500" jt="12" />
+			<column name="template_id" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="template_party" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" mandatory="y" />
+			<column name="party_id" type="int" jt="4" mandatory="y" />
+			<column name="required" type="bit" jt="-7" />
+			<column name="sign_required" type="bit" jt="-7" />
+			<column name="info_required" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="smart" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="applicant" type="bit" jt="-7" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+		</table>
+		<table name="template_reason" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="reason" type="nvarchar" length="500" jt="12" />
+			<column name="template_id" type="int" jt="4" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="term" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (0, 1)]]></identity>
+			</column>
+			<column name="template_id" type="int" jt="4" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="title" type="nvarchar" length="150" jt="12" />
+			<column name="content" type="nvarchar" length="4000" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="template_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="transaction_fee" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="transaction_name_shortcut" type="nvarchar" length="250" jt="12" mandatory="y" />
+			<column name="value" type="float" jt="8" mandatory="y" />
+			<column name="sub_class" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="prime_class" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="multiplied" type="bit" jt="-7" mandatory="y" />
+			<column name="percentage" type="bit" jt="-7" mandatory="y" />
+			<column name="per_page" type="bit" jt="-7" />
+			<column name="max_limited_tax" type="int" jt="4" />
+			<column name="more_than" type="int" jt="4" />
+			<column name="less_than" type="int" jt="4" />
+			<column name="notes" type="nvarchar" length="500" jt="12" />
+			<column name="limited_value" type="bit" jt="-7" mandatory="y" />
+			<column name="entity_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="entity_gl_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="service_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="service_gl_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="mapping_FMIS_code_epos" type="nvarchar" length="50" jt="12" />
+			<column name="adib_service_code" type="nvarchar" length="50" jt="12" />
+		</table>
+		<table name="transaction_old_version" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="transaction_id" type="int" jt="4" mandatory="y" />
+			<column name="transaction_no" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="document_url" type="nvarchar" length="100" jt="12" mandatory="y" />
+			<column name="transaction_created_date" type="datetime" jt="92" mandatory="y" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="last_updated_by" type="int" jt="4" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="old_transaction_id" type="int" jt="4" />
+			<column name="note" type="nvarchar" length="500" jt="12" />
+		</table>
+		<table name="uae_pass_application" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" />
+			<column name="app_no" type="varchar" length="50" jt="12" />
+			<column name="owner" type="nvarchar" length="250" jt="12" />
+			<column name="created_by" type="int" jt="4" />
+			<column name="created_at" type="datetime" jt="92" />
+			<column name="updated_at" type="datetime" jt="92" />
+			<column name="status" type="int" jt="4" />
+			<column name="description" type="nvarchar" length="250" jt="12" />
+			<column name="file_url" type="nvarchar" length="250" jt="12" />
+			<column name="service_id" type="int" jt="4" />
+			<column name="notary_sign_count" type="int" jt="4" />
+			<column name="party_signer_count" type="int" jt="4" />
+			<column name="resend_count" type="int" jt="4" />
+			<column name="eservice_data" type="nvarchar" length="500" jt="12" />
+			<index name="FK_2" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+			<index name="FK_3" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="service_id" options=" ASC" />
+			</index>
+			<index name="FK_4" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="created_by" options=" ASC" />
+			</index>
+		</table>
+		<table name="uaepass_signer" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="app_id" type="int" jt="4" mandatory="y" />
+			<column name="code" type="varchar" length="50" jt="12" />
+			<column name="sign_pos_x" type="float" jt="8" />
+			<column name="sign_pos_y" type="float" jt="8" />
+			<column name="sign_pos_id" type="varchar" length="50" jt="12" />
+			<column name="signer_name" type="nvarchar" length="200" jt="12" />
+			<column name="signer_email" type="nvarchar" length="250" jt="12" />
+			<column name="signer_phone" type="varchar" length="50" jt="12" />
+			<column name="signer_eid" type="varchar" length="50" jt="12" />
+			<column name="is_owner" type="bit" jt="-7" />
+			<column name="signer_type" type="nvarchar" length="200" jt="12" />
+			<column name="page_no" type="int" jt="4" />
+			<column name="signer_sequence" type="varchar" length="25" jt="12" />
+			<column name="signed" type="bit" jt="-7" />
+			<column name="created_date" type="datetime" jt="92" />
+			<column name="updated_date" type="datetime" jt="92" />
+			<column name="process_id" type="nvarchar" length="50" jt="12" />
+			<column name="signature_id" type="nvarchar" length="50" jt="12" />
+			<column name="signature_url" type="nvarchar" length="250" jt="12" />
+			<column name="notary_sign_status" type="nvarchar" length="50" jt="12" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="app_id" options=" ASC" />
+			</index>
+			<index name="IX_uaepass_signer_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="notary_sign_status" options=" ASC" />
+			</index>
+		</table>
+		<table name="user" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="UserName" type="nvarchar" length="200" jt="12" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="NormalizedUserName" type="nvarchar" length="200" jt="12" />
+			<column name="Email" type="nvarchar" length="200" jt="12" mandatory="y" />
+			<column name="NormalizedEmail" type="nvarchar" length="200" jt="12" />
+			<column name="EmailConfirmed" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="PasswordHash" type="nvarchar" length="200" jt="12" />
+			<column name="SecurityStamp" type="nvarchar" length="250" jt="12" />
+			<column name="ConcurrencyStamp" type="nvarchar" length="200" jt="12" />
+			<column name="PhoneNumber" type="nvarchar" length="200" jt="12" />
+			<column name="PhoneNumberConfirmed" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="TwoFactorEnabled" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="LockoutEnd" type="datetimeoffset" length="7" jt="92" />
+			<column name="LockoutEnabled" type="bit" jt="-7" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="AccessFailedCount" type="int" jt="4" mandatory="y" >
+				<defo><![CDATA[((0))]]></defo>
+			</column>
+			<column name="full_name" type="nvarchar" length="200" jt="12" />
+			<column name="security_question_id" type="int" jt="4" />
+			<column name="security_question_answer" type="nvarchar" length="100" jt="12" />
+			<column name="birthday_date" type="datetime" jt="92" />
+			<column name="gender" type="nvarchar" length="50" jt="12" />
+			<column name="nat_id" type="int" jt="4" />
+			<column name="tel_no" type="nvarchar" length="50" jt="12" />
+			<column name="status" type="int" jt="4" />
+			<column name="email_lang" type="nvarchar" length="50" jt="12" />
+			<column name="SMS_lang" type="nvarchar" length="50" jt="12" />
+			<column name="area_id" type="int" jt="4" />
+			<column name="notification_type" type="int" jt="4" />
+			<column name="profile_status" type="int" jt="4" />
+			<column name="address" type="nvarchar" length="255" jt="12" />
+			<column name="emirates_id" type="nvarchar" length="50" jt="12" />
+			<column name="image" type="nvarchar" length="200" jt="12" />
+			<column name="created_date" type="datetime" jt="92" >
+				<defo><![CDATA[(getdate())]]></defo>
+			</column>
+			<column name="last_updated_date" type="datetime" jt="92" />
+			<column name="rec_status" type="varchar" length="16" jt="12" />
+			<column name="notary_place_id" type="int" jt="4" />
+			<column name="LockoutEndDateUtc" type="datetime" jt="92" />
+			<column name="sign" type="varchar" length="255" jt="12" />
+			<column name="emaritID_old_users" type="nvarchar" length="50" jt="12" />
+			<column name="email_id_old_users" type="nvarchar" length="50" jt="12" />
+			<column name="location_id" type="int" jt="4" />
+			<column name="uu_id" type="nvarchar" length="200" jt="12" />
+			<column name="expired_date" type="datetime" jt="92" />
+			<index name="IX_user_email" unique="UNIQUE_INDEX" spec=" NONCLUSTERED" >
+				<column name="Email" options=" ASC" />
+			</index>
+			<index name="IX_user_emirate_id" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="emirates_id" options=" ASC" />
+			</index>
+			<index name="IX_user_user_name" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="UserName" options=" ASC" />
+			</index>
+		</table>
+		<table name="user-claim" spec="" >
+			<column name="Id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="UserId" type="int" jt="4" mandatory="y" />
+			<column name="ClaimType" type="nvarchar(max)" jt="12" />
+			<column name="ClaimValue" type="nvarchar(max)" jt="12" />
+		</table>
+		<table name="user-login" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="login_provider" type="nvarchar" length="128" jt="12" mandatory="y" />
+			<column name="provider_key" type="nvarchar" length="128" jt="12" mandatory="y" />
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="provider_display_name" type="nvarchar" length="128" jt="12" />
+			<column name="login_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="user-role" spec="" >
+			<column name="UserId" type="int" jt="4" mandatory="y" />
+			<column name="RoleId" type="int" jt="4" mandatory="y" />
+		</table>
+		<table name="user-token" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" />
+			<column name="userId" type="int" jt="4" mandatory="y" />
+			<column name="logInProvider" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<column name="name" type="nvarchar" length="150" jt="12" mandatory="y" />
+			<column name="value" type="nvarchar" length="150" jt="12" mandatory="y" />
+		</table>
+		<table name="user_skip_search" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="user_id" type="int" jt="4" mandatory="y" />
+			<column name="skip_count" type="int" jt="4" mandatory="y" />
+			<column name="search_count" type="int" jt="4" mandatory="y" />
+			<column name="updated_by" type="int" jt="4" />
+			<column name="updated_date" type="datetime" jt="92" />
+			<index name="FK_1" unique="NORMAL" spec=" NONCLUSTERED" >
+				<column name="user_id" options=" ASC" />
+			</index>
+		</table>
+		<table name="working_hours" spec="" >
+			<column name="id" type="int" jt="4" mandatory="y" >
+				<identity><![CDATA[IDENTITY  (1, 1)]]></identity>
+			</column>
+			<column name="working_time_name_shortcut" type="nvarchar" length="50" jt="12" mandatory="y" />
+			<column name="day_of_week" type="int" jt="4" mandatory="y" />
+			<column name="start_from" type="int" jt="4" mandatory="y" />
+			<column name="finish_at" type="int" jt="4" mandatory="y" />
+			<column name="start_date" type="date" jt="91" />
+			<column name="finish_date" type="date" jt="91" />
+			<column name="created_at" type="datetime" jt="92" />
+			<column name="updated_at" type="datetime" jt="92" />
+		</table>
+	</schema>
+	<layout name="Layout" id="Layout-fb4" show_relation="columns" >
+		<entity schema="dbo" name="OCRDocumentFields" color="BED3F4" x="1872" y="3392" />
+		<entity schema="dbo" name="OCRDocuments" color="BED3F4" x="2592" y="1760" />
+		<entity schema="dbo" name="__EFMigrationsHistory" color="BED3F4" x="1600" y="2624" />
+		<entity schema="dbo" name="adm_action" color="BED3F4" x="1840" y="2624" />
+		<entity schema="dbo" name="adm_service" color="D1BEF4" x="2736" y="272" />
+		<entity schema="dbo" name="adm_service_document_type" color="D1BEF4" x="2416" y="48" />
+		<entity schema="dbo" name="adm_stage" color="D1BEF4" x="3344" y="1088" />
+		<entity schema="dbo" name="adm_stage_action" color="D1BEF4" x="3600" y="1088" />
+		<entity schema="dbo" name="app_related_content" color="BED3F4" x="1600" y="2800" />
+		<entity schema="dbo" name="app_services" color="BED3F4" x="2320" y="3408" />
+		<entity schema="dbo" name="app_transaction" color="BED3F4" x="2240" y="3632" />
+		<entity schema="dbo" name="application" color="BED3F4" x="1344" y="2800" />
+		<entity schema="dbo" name="application_attachment" color="BED3F4" x="3872" y="3792" />
+		<entity schema="dbo" name="application_objection" color="BED3F4" x="3648" y="3408" />
+		<entity schema="dbo" name="application_objection_attachment" color="BED3F4" x="3344" y="3792" />
+		<entity schema="dbo" name="application_party" color="BED3F4" x="4128" y="3440" />
+		<entity schema="dbo" name="application_party_deleted" color="BED3F4" x="4384" y="4176" />
+		<entity schema="dbo" name="application_party_extra_attachment" color="BED3F4" x="4384" y="3440" />
+		<entity schema="dbo" name="application_track" color="BED3F4" x="3888" y="3440" />
+		<entity schema="dbo" name="aramex_emara" color="BED3F4" x="1408" y="2608" />
+		<entity schema="dbo" name="aramex_logs" color="BED3F4" x="2368" y="1840" />
+		<entity schema="dbo" name="aramex_requests" color="BED3F4" x="2368" y="2080" />
+		<entity schema="dbo" name="black_list_application" color="BED3F4" x="1600" y="2320" />
+		<entity schema="dbo" name="black_list_managers" color="BEBEF4" x="3344" y="4944" />
+		<entity schema="dbo" name="black_list_party" color="BEBEF4" x="3568" y="4944" />
+		<entity schema="dbo" name="block_chain_POA" color="BED3F4" x="1840" y="2304" />
+		<entity schema="dbo" name="calendar" color="BED3F4" x="2080" y="2624" />
+		<entity schema="dbo" name="car_info" color="BED3F4" x="1840" y="2896" />
+		<entity schema="dbo" name="chatbot_attachments" color="BED3F4" x="2080" y="2400" />
+		<entity schema="dbo" name="chatbot_fields" color="C7F4BE" x="640" y="4944" />
+		<entity schema="dbo" name="chatbot_parties" color="C7F4BE" x="864" y="4944" />
+		<entity schema="dbo" name="chatbot_services" color="C7F4BE" x="864" y="5216" />
+		<entity schema="dbo" name="country" color="BED3F4" x="1600" y="3392" />
+		<entity schema="dbo" name="death_doh_Info" color="BED3F4" x="1328" y="3392" >
+			<column name="id" />
+			<column name="entity_code" />
+			<column name="transaction_id" />
+			<column name="operation_type_id" />
+			<column name="unique_id_type" />
+			<column name="death_reference_no" />
+			<column name="full_name_english" />
+			<column name="first_name_english" />
+			<column name="second_name_english" />
+			<column name="family_name_english" />
+			<column name="full_name_arabic" />
+		</entity>
+		<entity schema="dbo" name="death_doh_info_consumer_entity" color="C7F4BE" x="2208" y="4944" />
+		<entity schema="dbo" name="death_emarit_id" color="C7F4BE" x="2464" y="5136" />
+		<entity schema="dbo" name="death_info_moh_nationality" color="BEBEF4" x="3344" y="5568" />
+		<entity schema="dbo" name="death_moh_Emirate" color="BEBEF4" x="3616" y="5568" />
+		<entity schema="dbo" name="death_moh_Info" color="C7F4BE" x="2992" y="5136" />
+		<entity schema="dbo" name="death_moh_city" color="C7F4BE" x="2768" y="5136" />
+		<entity schema="dbo" name="death_moh_death_places" color="C7F4BE" x="2512" y="4944" />
+		<entity schema="dbo" name="death_moh_document_ids" color="C7F4BE" x="2768" y="4944" />
+		<entity schema="dbo" name="death_moh_hospitals" color="BEBEF4" x="3840" y="5568" />
+		<entity schema="dbo" name="death_moh_proffessions" color="BEBEF4" x="3840" y="5776" />
+		<entity schema="dbo" name="death_moh_relation_to_baby" color="BEBEF4" x="3552" y="5776" />
+		<entity schema="dbo" name="document_storage" color="BED3F4" x="1600" y="3184" />
+		<entity schema="dbo" name="document_type_kind" color="BED3F4" x="1584" y="4480" />
+		<entity schema="dbo" name="emp_logger" color="BED3F4" x="1104" y="3168" />
+		<entity schema="dbo" name="employee_setting" color="BED3F4" x="1056" y="2384" />
+		<entity schema="dbo" name="entity_services" color="BED3F4" x="1120" y="2800" />
+		<entity schema="dbo" name="epos_machine" color="BED3F4" x="1328" y="1984" />
+		<entity schema="dbo" name="file_configuration" color="BED3F4" x="1600" y="2016" />
+		<entity schema="dbo" name="g2g_requests" color="BED3F4" x="1408" y="2320" />
+		<entity schema="dbo" name="global_day_off" color="BED3F4" x="1840" y="2016" />
+		<entity schema="dbo" name="inspector_apps" color="BED3F4" x="2080" y="2080" />
+		<entity schema="dbo" name="location" color="BED3F4" x="2320" y="2624" />
+		<entity schema="dbo" name="meeting" color="BED3F4" x="2320" y="2976" />
+		<entity schema="dbo" name="meeting_logging" color="BED3F4" x="2592" y="2096" />
+		<entity schema="dbo" name="notary_place" color="BED3F4" x="2080" y="2976" />
+		<entity schema="dbo" name="notification_action" color="BED3F4" x="2320" y="2352" />
+		<entity schema="dbo" name="notification_log" color="BED3F4" x="320" y="5616" />
+		<entity schema="dbo" name="notification_log_2021" color="BED3F4" x="48" y="5616" />
+		<entity schema="dbo" name="notification_log_2023" color="BED3F4" x="48" y="5200" />
+		<entity schema="dbo" name="notification_template" color="BED3F4" x="48" y="4944" />
+		<entity schema="dbo" name="notification_template_detail" color="BED3F4" x="336" y="4944" />
+		<entity schema="dbo" name="otp_log" color="BED3F4" x="1872" y="3808" />
+		<entity schema="dbo" name="payment" color="BED3F4" x="1584" y="3808" />
+		<entity schema="dbo" name="payment_details" color="BED3F4" x="1872" y="4480" />
+		<entity schema="dbo" name="payment_gate_attempt" color="BED3F4" x="1872" y="4096" />
+		<entity schema="dbo" name="pns_adm_action" color="BED3F4" x="1328" y="3712" />
+		<entity schema="dbo" name="pns_adm_service" color="BED3F4" x="4720" y="272" />
+		<entity schema="dbo" name="pns_adm_service_document_type" color="BED3F4" x="4416" y="816" />
+		<entity schema="dbo" name="pns_adm_stage" color="F4DDBE" x="3600" y="1840" />
+		<entity schema="dbo" name="pns_adm_stage_action" color="F4DDBE" x="3856" y="1840" />
+		<entity schema="dbo" name="pns_app_related_content" color="F4DDBE" x="4176" y="1520" />
+		<entity schema="dbo" name="pns_app_transaction" color="F4DDBE" x="3856" y="2224" />
+		<entity schema="dbo" name="pns_application" color="BEBEF4" x="5568" y="1520" />
+		<entity schema="dbo" name="pns_application_attachment" color="F4DDBE" x="4688" y="1920" />
+		<entity schema="dbo" name="pns_application_objection" color="F4DDBE" x="4688" y="1520" />
+		<entity schema="dbo" name="pns_application_objection_attachment" color="BEBEF4" x="6080" y="1520" />
+		<entity schema="dbo" name="pns_application_party" color="F4DDBE" x="4432" y="1520" />
+		<entity schema="dbo" name="pns_application_party_extra_attachment" color="F4DDBE" x="4688" y="2288" />
+		<entity schema="dbo" name="pns_application_track" color="BEBEF4" x="5824" y="1520" />
+		<entity schema="dbo" name="pns_black_list_application" color="C7F4BE" x="4176" y="2768" />
+		<entity schema="dbo" name="pns_location" color="C7F4BE" x="4432" y="2768" />
+		<entity schema="dbo" name="pns_notification_action" color="BEBEF4" x="5072" y="1520" />
+		<entity schema="dbo" name="pns_office" color="BEBEF4" x="5344" y="1520" />
+		<entity schema="dbo" name="pns_payment" color="C7F4BE" x="4672" y="2768" />
+		<entity schema="dbo" name="pns_payment_details" color="C7F4BE" x="4960" y="2768" />
+		<entity schema="dbo" name="pns_payment_gate_attempt" color="C7F4BE" x="5216" y="2768" />
+		<entity schema="dbo" name="pns_related_content" color="F4DDBE" x="3600" y="1520" />
+		<entity schema="dbo" name="pns_service_stage_fee" color="BED3F4" x="4176" y="1008" />
+		<entity schema="dbo" name="pns_stage_master_attachment" color="D1BEF4" x="5232" y="272" />
+		<entity schema="dbo" name="pns_sys_execution" color="D1BEF4" x="5520" y="272" />
+		<entity schema="dbo" name="pns_table_name" color="BED3F4" x="4416" y="1008" />
+		<entity schema="dbo" name="pns_target_application" color="BED3F4" x="4352" y="1216" />
+		<entity schema="dbo" name="pns_target_service" color="D1BEF4" x="6224" y="272" />
+		<entity schema="dbo" name="pns_template" color="F4DDBE" x="3344" y="1520" />
+		<entity schema="dbo" name="pns_template_attachment" color="D1BEF4" x="5744" y="272" />
+		<entity schema="dbo" name="pns_template_party" color="D1BEF4" x="6000" y="272" />
+		<entity schema="dbo" name="pns_term" color="BED3F4" x="4176" y="720" />
+		<entity schema="dbo" name="pns_transaction_fee" color="BED3F4" x="4624" y="1008" />
+		<entity schema="dbo" name="pns_transaction_old_version" color="BED3F4" x="4912" y="1008" />
+		<entity schema="dbo" name="prisons" color="BED3F4" x="1120" y="3712" />
+		<entity schema="dbo" name="queue_processes" color="BED3F4" x="848" y="3392" />
+		<entity schema="dbo" name="related_content" color="BED3F4" x="1104" y="3392" />
+		<entity schema="dbo" name="related_data" color="BED3F4" x="1344" y="4480" />
+		<entity schema="dbo" name="role" color="BED3F4" x="848" y="3136" />
+		<entity schema="dbo" name="role-claim" color="BED3F4" x="640" y="3392" />
+		<entity schema="dbo" name="service_fee" color="BED3F4" x="832" y="2800" />
+		<entity schema="dbo" name="service_kind" color="D1BEF4" x="2400" y="736" />
+		<entity schema="dbo" name="shorten_url" color="BED3F4" x="864" y="2624" />
+		<entity schema="dbo" name="skipp_apps" color="BED3F4" x="848" y="2384" />
+		<entity schema="dbo" name="stage_master_attachment" color="BED3F4" x="784" y="2128" />
+		<entity schema="dbo" name="sys_execution" color="BED3F4" x="1056" y="2128" />
+		<entity schema="dbo" name="sys_language" color="BED3F4" x="864" y="1952" />
+		<entity schema="dbo" name="sys_lookup_type" color="D1BEF4" x="2736" y="1264" />
+		<entity schema="dbo" name="sys_lookup_value" color="D1BEF4" x="2736" y="1008" />
+		<entity schema="dbo" name="sys_translation" color="D1BEF4" x="2992" y="1264" />
+		<entity schema="dbo" name="tab" color="BED3F4" x="1072" y="1728" />
+		<entity schema="dbo" name="table_name" color="BED3F4" x="1328" y="1776" />
+		<entity schema="dbo" name="target_application" color="BED3F4" x="1600" y="1728" />
+		<entity schema="dbo" name="target_service" color="BED3F4" x="1312" y="1520" />
+		<entity schema="dbo" name="template" color="F4DDBE" x="3344" y="48" />
+		<entity schema="dbo" name="template_attachment" color="F4DDBE" x="3584" y="48" />
+		<entity schema="dbo" name="template_entities" color="F4DDBE" x="3824" y="48" />
+		<entity schema="dbo" name="template_party" color="F4DDBE" x="3584" y="512" />
+		<entity schema="dbo" name="template_reason" color="F4DDBE" x="3808" y="512" />
+		<entity schema="dbo" name="term" color="BED3F4" x="2080" y="1728" />
+		<entity schema="dbo" name="transaction_fee" color="BED3F4" x="2560" y="2624" />
+		<entity schema="dbo" name="transaction_old_version" color="BED3F4" x="3024" y="2016" />
+		<entity schema="dbo" name="uae_pass_application" color="D1BEF4" x="2464" y="272" />
+		<entity schema="dbo" name="uaepass_signer" color="BED3F4" x="2560" y="3408" />
+		<entity schema="dbo" name="user" color="D1BEF4" x="3024" y="272" />
+		<entity schema="dbo" name="user-claim" color="BED3F4" x="2816" y="2352" />
+		<entity schema="dbo" name="user-login" color="D1BEF4" x="2432" y="1008" />
+		<entity schema="dbo" name="user-role" color="BED3F4" x="3024" y="2352" />
+		<entity schema="dbo" name="user-token" color="BED3F4" x="3024" y="2560" />
+		<entity schema="dbo" name="user_skip_search" color="BED3F4" x="2592" y="2352" />
+		<entity schema="dbo" name="working_hours" color="BED3F4" x="2560" y="3120" />
+		<callout x="1920" y="416" pointer="Round" >
+			<comment><![CDATA[Add tables to the layout diagram (here) by drag & drop from the Project Tree.
+Drop this callout from its right-click pop-up.]]></comment>
+		</callout>
+	</layout>
+</project>
